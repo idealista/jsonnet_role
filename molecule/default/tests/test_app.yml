@@ -1,0 +1,13 @@
+---
+
+file:
+  {{ jsonnet_bin_path }}:
+    exists: true
+    filetype: directory
+
+command:
+  version:
+    exit-status: 0
+    exec: "jsonnet --version"
+    stdout:
+    - {{ jsonnet_version }}

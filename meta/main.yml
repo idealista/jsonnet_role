@@ -1,0 +1,18 @@
+---
+
+galaxy_info:
+  author: idealista
+  company: Idealista S.A.U.
+  description: Jsonnet Role
+  min_ansible_version: 2.4
+  license: Apache 2.0
+  galaxy-tags:
+    - jsonnet
+    - json
+    - language
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+        - buster

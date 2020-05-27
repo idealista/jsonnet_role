@@ -1,0 +1,26 @@
+---
+
+## General
+# Version
+jsonnet_version: 0.15.0
+jsonnet_release_system: linux
+
+# Package URL
+jsonnet_release_name: "jsonnet-bin-v{{ jsonnet_version }}-{{ jsonnet_release_system }}"
+jsonnet_package: "{{ jsonnet_release_name }}.tar.gz"
+jsonnet_url: "https://github.com/google/jsonnet/releases/download/v{{ jsonnet_version }}/{{ jsonnet_package }}"
+
+# Package paths
+jsonnet_download_path: /usr/src
+jsonnet_package_path: "{{ jsonnet_download_path }}/{{ jsonnet_package }}"
+jsonnet_src_bin: "{{ jsonnet_download_path }}/{{ jsonnet_exec_name }}"
+
+# Set true to force the download and installation of the binary
+jsonnet_force_reinstall: false
+
+# Installation path
+jsonnet_root_path: /opt/jsonnet
+jsonnet_bin_path: "{{ jsonnet_root_path }}/bin"
+jsonnet_skeleton_paths: 
+  - "{{ jsonnet_bin_path }}"
+jsonnet_exec_name: jsonnet

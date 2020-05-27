@@ -1,0 +1,5 @@
+---
+- name: Converge
+  hosts: jsonnet_group
+  roles:
+    - role: jsonnet_role

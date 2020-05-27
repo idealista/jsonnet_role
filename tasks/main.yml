@@ -1,0 +1,6 @@
+---
+
+- name: JSONNET | Install
+  include: install.yml
+  tags:
+    - jsonnet_install

@@ -1,0 +1,42 @@
+---
+
+- name: JSONNET | Ensure skeleton paths
+  file:
+    dest: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ jsonnet_skeleton_paths }}"
+
+- name: JSONNET | Check jsonnet version
+  command: jsonnet --version
+  register: jsonnet_check
+  changed_when: false
+  ignore_errors: true
+
+- name: JSONNET | Download package
+  get_url:
+    url: "{{ jsonnet_url }}"
+    dest: "{{ jsonnet_package_path }}"
+  when: jsonnet_force_reinstall or jsonnet_check is failed or jsonnet_version not in jsonnet_check.stderr
+
+- name: JSONNET | Extract downloaded package
+  unarchive:
+    src: "{{ jsonnet_package_path }}"
+    dest: "{{ jsonnet_download_path }}"
+    remote_src: True
+  when: jsonnet_force_reinstall or jsonnet_check is failed or jsonnet_version  not in jsonnet_check.stderr
+
+- name: JSONNET | Copy binary
+  copy:
+    src: "{{ jsonnet_src_bin }}"
+    dest: "{{ jsonnet_bin_path }}/{{ jsonnet_exec_name }}"
+    remote_src: True
+    mode: 0755
+  when: jsonnet_force_reinstall or jsonnet_check is failed or jsonnet_version not in jsonnet_check.stderr
+
+- name: JSONNET | Link binary
+  file:
+    src: "{{ jsonnet_bin_path }}/{{ jsonnet_exec_name }}"
+    dest: "/usr/bin/{{ jsonnet_exec_name }}"
+    state: link
+  when: jsonnet_force_reinstall or jsonnet_check is failed or jsonnet_version not in jsonnet_check.stderr
