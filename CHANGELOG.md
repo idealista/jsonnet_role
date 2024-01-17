@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 
 ## Added
-- *[PLATFORM-3582]- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
+- *[#10](https://github.com/idealista/jsonnet_role/pull/10) (2024-01-17)- Add ".gitattributes" file for linguist detection.* @ygomezsaiz
 
 ## [1.0.0](https://github.com/idealista/jsonnet_role/tree/1.0.0) (2020-05-27)
 
